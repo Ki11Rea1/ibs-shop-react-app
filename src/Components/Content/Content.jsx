@@ -1,23 +1,15 @@
-import { useEffect, useState } from "react";
-import { getCatalogData } from "../../API/getCatalogData.js";
+import { Route, Routes } from "react-router-dom";
 import Catalog from "./Catalog/Catalog";
+import DetailedPage from "./Detailed/DetailedPage.jsx";
 
-const Content = (props) => {
-  const [items, setItems] = useState();
-
-  const fetchItems = async () => {
-    const responce = await getCatalogData();
-    setItems(responce);
-  };
-
-  useEffect(() => {
-    fetchItems();
-  }, []);
-
+const Content = () => {
   return (
-    <div>
-      <Catalog items={items} />
-    </div>
+    <>
+      <Routes>
+        <Route path="/*" element={<Catalog />} />
+        <Route path="/item/:itemid" element={<DetailedPage />} />
+      </Routes>
+    </>
   );
 };
 

@@ -1,4 +1,5 @@
 import "./Header.css";
+import SearchInput from "./SearchInput";
 
 const Header = () => {
   return (
@@ -18,10 +19,7 @@ const Header = () => {
             />
           </svg>
         </div>
-        <input
-          className="search-field__search-input"
-          placeholder="Search products"
-        />
+        <SearchInput />
       </div>
       <nav className="nav-icons">
         <div className="nav-icons__cart">

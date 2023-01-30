@@ -10,9 +10,6 @@ const Catalog = (props) => {
   const items = useSelector((state) => state.products.items);
   const searchedItems = useSelector((state) => state.products.searchedItems);
 
-  console.log(items.length);
-  console.log(searchedItems.length);
-
   useEffect(() => {
     dispatch(fetchAllItems());
   }, [dispatch]);

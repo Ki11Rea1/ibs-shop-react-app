@@ -32,6 +32,8 @@ export const itemsSlice = createSlice({
   reducers: {
     setSearch: (state, action) => {
       state.search = action.payload;
+    },
+    setSearchedItems: (state) => {
       state.searchedItems = [...state.items].filter(
         (i) => i.name === state.search
       );
@@ -56,6 +58,6 @@ export const itemsSlice = createSlice({
 });
 
 // Destructure and export the plain action creators
-export const { setSearch } = itemsSlice.actions;
+export const { setSearch, setSearchedItems } = itemsSlice.actions;
 
 export default itemsSlice.reducer;

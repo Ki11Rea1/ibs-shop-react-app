@@ -1,22 +1,24 @@
 import Item from "./Item/Item";
 import "./Catalog.css";
-import { useEffect, useState } from "react";
-import { getCatalogData } from "../../../API/getCatalogData";
+import { useEffect } from "react";
+
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllItems } from "../../../ReduxStore/ItemsSlice";
 
 const Catalog = (props) => {
-  let [items, setItems] = useState([]);
+  const dispatch = useDispatch();
+  const items = useSelector((state) => state.products.items);
+  const searchedItems = useSelector((state) => state.products.searchedItems);
 
-  const fetchItems = async () => {
-    const responce = await getCatalogData();
-    setItems(responce);
-  };
+  console.log(items.length);
+  console.log(searchedItems.length);
 
   useEffect(() => {
-    fetchItems();
-  }, []);
+    dispatch(fetchAllItems());
+  }, [dispatch]);
   return (
     <div className="catalog">
-      {items.map((i) => (
+      {(searchedItems.length ? searchedItems : items).map((i) => (
         <Item item={i} key={i.id} />
       ))}
     </div>

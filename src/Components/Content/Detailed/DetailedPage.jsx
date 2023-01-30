@@ -1,21 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { API_URL } from "../../../API/constants";
-import { getDetailedPageData } from "../../../API/getDetailedPageData";
+import { fetchItemById } from "../../../ReduxStore/ItemsSlice";
 import "./DetailedPage.css";
 
 const DetailedPage = () => {
   const params = useParams();
-  let [item, setItem] = useState({});
-
-  const fetchItems = async () => {
-    const responce = await getDetailedPageData(params.itemid);
-    setItem(responce);
-  };
+  const dispatch = useDispatch();
+  const item = useSelector((state) => state.products.item);
 
   useEffect(() => {
-    fetchItems();
-  });
+    dispatch(fetchItemById(params));
+  }, [dispatch]);
 
   if (Object.keys(item).length === 0) {
     return null;

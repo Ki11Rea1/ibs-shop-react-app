@@ -19,7 +19,7 @@ function searchName() {
   }
 }
 
-export const debouncedSearch = () => {
+export const debouncedSearch = (callback) => {
   const searchInput = document.querySelector(".search-field__search-input");
-  searchInput.addEventListener("keyup", debounce(searchName, 1000));
+  searchInput.addEventListener("keyup", debounce(callback, 1000));
 };

@@ -1,6 +1,8 @@
 import { mockoon } from "./client.js";
 
 export const getCatalogData = async () => {
-  let content = await mockoon.get("/item/").then((responce) => responce.data);
-  return content.content;
+  const { content = null } = await mockoon
+    .get("/item/")
+    .then((responce) => responce.data);
+  return content;
 };

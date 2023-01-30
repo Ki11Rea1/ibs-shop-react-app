@@ -6,10 +6,6 @@ export const mockoon = axios.create({
 });
 
 mockoon.interceptors.response.use(
-  function (response) {
-    return response;
-  },
-  function (error) {
-    return Promise.reject(alert(error));
-  }
+  (response) => response,
+  (error) => Promise.reject(alert(error))
 );

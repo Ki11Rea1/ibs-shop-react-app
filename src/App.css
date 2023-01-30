@@ -1,14 +1,13 @@
 :root {
   --bg-color: #f2f2f2;
   --bg-color-darker: #dfdfdf;
-  --shadow-color: rgba(0, 0, 0, 0.15);
+  --shadow-color: #00000026;
   --orange-color: #e97f03;
   --border-color: #323232;
 }
 
 body {
   margin: 0px;
-  font-family: "Roboto", sans-serif;
 }
 
 .hide {

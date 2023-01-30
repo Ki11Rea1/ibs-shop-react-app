@@ -1,6 +1,6 @@
 .catalog {
+  margin: 0px 16px 0px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 0px 16px 0px;
 }

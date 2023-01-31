@@ -1,13 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setSearch, setSearchedItems } from "../../ReduxStore/ItemsSlice";
+import { setSearch } from "../../ReduxStore/ItemsSlice";
+import useDebounce from "../../Utilities/debounce";
 
 const SearchInput = () => {
   const dispatch = useDispatch();
   const searchQuerry = useSelector((state) => state.products.search);
   const handleSearch = (e) => {
     dispatch(setSearch(e.target.value));
-    dispatch(setSearchedItems());
   };
+  useDebounce(searchQuerry, 1000);
   return (
     <input
       value={searchQuerry}
